@@ -28,7 +28,7 @@ describe("Property Mapper", () => {
         entity.maxGuests = 10;
         entity.basePricePerNight = 100;
 
-        expect(() => PropertyMapper.toDomain(entity)).toThrow("O nome é obrigatório");
+        expect(() => PropertyMapper.toDomain(entity)).toThrow("O nome da propriedade é obrigatório");
     })
 
     it("deve lançar erro de validação ao receber valor inválido para o máximo de hóspedes no PropertyEntity", () => {
@@ -39,7 +39,7 @@ describe("Property Mapper", () => {
         entity.maxGuests = -10;
         entity.basePricePerNight = 100;
 
-        expect(() => PropertyMapper.toDomain(entity)).toThrow("O número máximo de hóspedes deve ser maior que zero");
+        expect(() => PropertyMapper.toDomain(entity)).toThrow("A capacidade máxima deve ser maior que zero.");
     });
 
     it("deve lançar erro de validação quando não receber o valor do preço base por noite", () => {
