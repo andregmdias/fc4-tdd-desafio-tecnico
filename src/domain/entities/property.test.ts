@@ -30,6 +30,16 @@ describe("Property Entity", () => {
     expect(() => {
       new Property("1", "Casa", "Descrição", 0, 200);
     }).toThrow("O número máximo de hóspedes deve ser maior que zero");
+
+    expect(() => {
+      new Property("1", "Casa", "Descrição", -10, 200);
+    }).toThrow("O número máximo de hóspedes deve ser maior que zero");
+  });
+
+  it("deve lançar um erro se o preço base por noite for falsy", () => {
+    expect(() => {
+      new Property("1", "Casa", "Descrição", 3, 0);
+    }).toThrow("O preço base por noite é obrigatório");
   });
 
   it("deve validar o número máximo de hóspedes", () => {

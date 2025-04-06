@@ -40,7 +40,28 @@ describe("Property Mapper", () => {
         entity.basePricePerNight = 100;
 
         expect(() => PropertyMapper.toDomain(entity)).toThrow("O número máximo de hóspedes deve ser maior que zero");
-    })
+    });
+
+    it("deve lançar erro de validação quando não receber o valor do preço base por noite", () => {
+        const entity = new PropertyEntity();
+        entity.id = "1";
+        entity.name = "Test Property Entity";
+        entity.description = "Test Property Description";
+        entity.maxGuests = 10;
+
+        expect(() => PropertyMapper.toDomain(entity)).toThrow("O preço base por noite é obrigatório");
+    });
+
+    it("deve lançar erro de validação ao receber valor inválido para o preço base por noite", () => {
+        const entity = new PropertyEntity();
+        entity.id = "1";
+        entity.name = "Test Property Entity";
+        entity.description = "Test Property Description";
+        entity.maxGuests = 10;
+        entity.basePricePerNight = -100;
+
+        expect(() => PropertyMapper.toDomain(entity)).toThrow("O preço base por noite deve ser maior que zero");
+    });
 
     it("deve converter Property para PropertyEntity corretamente", () => {
        const property: Property = new Property(
