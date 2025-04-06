@@ -37,10 +37,9 @@ describe("TypeORMPropertyRepository", () => {
       200
     );
 
-    await propertyRepository.save(property);
-    const savedProperty = await repository.findOne({ where: { id: "1" } });
+    const savedProperty = await propertyRepository.save(property);
     expect(savedProperty).not.toBeNull();
-    expect(savedProperty?.id).toBe("1");
+    expect(savedProperty?.getId()).toBe("1");
   });
 
   it("deve retornar uma propriedade com ID valido", async () => {

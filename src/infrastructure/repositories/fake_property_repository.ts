@@ -11,7 +11,8 @@ export class FakePropertyRepository implements PropertyRepository {
     return this.properties.find((property) => property.getId() === id) ?? null;
   }
 
-  async save(property: Property): Promise<void> {
+  async save(property: Property): Promise<Property> {
     this.properties.push(property);
+    return property;
   }
 }

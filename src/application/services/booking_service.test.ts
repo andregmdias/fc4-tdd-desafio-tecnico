@@ -35,7 +35,7 @@ describe("BookingService", () => {
     );
   });
 
-  it("deve criar uma reserva com sucesso usando respositorio fake", async () => {
+  it("deve criar uma reserva com sucesso", async () => {
     const mockProperty = {
       getId: jest.fn().mockReturnValue("1"),
       isAvailable: jest.fn().mockReturnValue(true),
@@ -130,8 +130,6 @@ describe("BookingService", () => {
       endDate: new Date("2024-12-25"),
       guestCount: 2,
     };
-
-    const result = await bookingService.createBooking(bookingDTO);
 
     mockProperty.isAvailable.mockReturnValue(false);
     mockProperty.addBooking.mockImplementationOnce(() => {
